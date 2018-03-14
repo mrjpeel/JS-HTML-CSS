@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html> <!-- the < > make a tag -->
+<head> <!-- head section is instructions -->
+    <title>FORM VALIDATION</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="test/css" href="mystyle.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .examtitle{
+            text-align: center;
+            background-color: #ff6600;
+        }
+        .userentry {
+            width: 50%;
+            padding: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #222255;
+            border: 1px solid #222255;
+            border-radius: 5px;
+        }
+        label {
+            float: right;
+
+            align-content: right;
+            width: auto;
+        }
+    </style>
+</head>
+<body style="margin-left: auto; margin-right: auto; width: 50%"> <!-- content that is displayed -->
+<div class="examtitle" style="margin-left: auto; margin-right: auto; width: 100%">
+    <h1>Exam Entry Form</h1>
+</div>
+<br>
+<form name="ExamEntry" method="post">
+    <div class="userentry">
+        <p>
+        Full Name:
+        <label>
+            <input type="text" name="fullname">
+        </label>
+        </p>
+        <p>
+
+        Subject:
+        <label>
+            <input type="text" name="subject" >
+        </label>
+        </p>
+        <p>
+        Examination Number:
+        <label>
+            <input type="text" name="examnum" min="0001" max="9999"
+                   maxlength="4" size="10">
+        </label>
+        </p>
+    </div>
+    <br>
+    <div class="userentry">
+        <input type="radio" name="level" value="GCSE" checked>GCSE
+        <br>
+        <input type="radio" name="level" value="A-level">A-LEVEL
+        <br>
+        <input type="radio" name="level" value="AS-level">AS-LEVEL
+        <br>
+    </div>
+    <br>
+    <div class="userentry">
+        <input type="submit" value="Submit" onclick="validateform(); return false">
+        <input type="reset" value="Reset">
+    </div>
+</form>
+
+<script>
+    function validateform() {
+        var fnlabel = document.forms["ExamEntry"]["fullname"].value;
+        var sjlabel = document.forms["ExamEntry"]["subject"].value;
+        var examnum = document.forms["ExamEntry"]["examnum"].value;
+
+        if (fnlabel == null || fnlabel == "" || sjlabel == null || sjlabel == "" || examnum == null || examnum == "" ) {
+
+            alert("Name, Subject and Examination Number must be complete");
+            return false;
+        }
+
+        radioButtons();
+    }
+
+    function radioButtons() {
+        if (confirm("Is that the correct course?") == true){
+            window.location.href = 'welcome.html';
+        } else {
+            window.location.href = '#';
+        }
+    }
+</script>
+</body>
+
+</html> <!-- Closing tag has / in it -->
